@@ -120,7 +120,7 @@ Environment size: ~2.2 GB (conda) / 1.1 GB (Docker image).
 
 ## 6. Installation and usage
 
-Tested on **macOS arm64** (Apple Silicon) with both profiles and in **Linux arm64** containers. The pipeline needs internet access to download the data.
+Tested from a fresh clone with `-profile conda` on **macOS arm64** (Apple Silicon) and with `-profile docker` on **Linux arm64** and **Linux amd64** containers (amd64 emulated). All runs completed with the expected results (see [Expected results](#7-expected-results)). The pipeline needs internet access to download the data.
 
 ### Step 1: Install conda
 
