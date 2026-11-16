@@ -1,0 +1,5 @@
+sample_id,method,ARI,NMI,n_clusters,n_spots_scored
+151507,expr,0.2991,0.375,7,4190
+151507,spatial,0.3945,0.4916,7,4190
+151673,expr,0.2418,0.3737,7,3601
+151673,spatial,0.3254,0.4736,7,3601
