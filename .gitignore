@@ -1,0 +1,14 @@
+# Nextflow
+work/
+.nextflow/
+.nextflow.log*
+results*/
+# Local notes / course material
+PLAN.md
+*.pdf
+# Python / OS
+__pycache__/
+*.pyc
+.mplconfig/
+.numba_cache/
+.DS_Store

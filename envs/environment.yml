@@ -1,0 +1,24 @@
+# Conda environment for every spPipe process.
+# Versions are pinned so results are reproducible across machines.
+# Used by: -profile conda (Nextflow builds it) and the Dockerfile.
+name: sppipe
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - scanpy=1.11.5
+  - squidpy=1.8.2
+  - anndata=0.12.19
+  - leidenalg=0.12.0
+  - python-igraph=1.0.0
+  - scikit-learn=1.9.1
+  - pandas=2.3.3
+  - numpy=2.4.6
+  - scipy=1.17.1
+  - matplotlib=3.11.2
+  - jinja2=3.1.6
+  - h5py=3.16.0
+  - pillow=13.0.0
+  # libarrow 26.0.1 on osx-arm64 links a Homebrew lz4 path and fails to load.
+  - pyarrow=25.0.1
