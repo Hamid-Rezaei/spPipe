@@ -1,0 +1,25 @@
+// Process-level DAG of spPipe. Render: dot -Tpng -Gdpi=150 docs/dag.dot -o docs/dag.png
+digraph spPipe {
+  rankdir=TB; nodesep=0.35; ranksep=0.35;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#555555", penwidth=1.2, margin="0.15,0.06"];
+  edge [color="#555555", arrowsize=0.7];
+
+  sheet   [label="samplesheet.csv\n(sample IDs)", shape=note, fillcolor="#ffffff"];
+  fetch   [label="FETCH_DATA\nspatialLIBD S3 + GitHub → AnnData", fillcolor="#eeeeee"];
+  qc      [label="QC_FILTER\nscanpy QC metrics, spot/gene filter", fillcolor="#dbe9f6"];
+  norm    [label="NORMALIZE\nnormalize, log1p, 3,000 HVGs, PCA", fillcolor="#dbe9f6"];
+  expr    [label="CLUSTER_EXPR\nkNN on PCs + Leiden\n(expression only)", fillcolor="#e8e8e8"];
+  spat    [label="CLUSTER_SPATIAL\nsquidpy spatial graph + neighbour-\naveraged PCs (BANKSY-style) + Leiden", fillcolor="#cfe3f3"];
+  eval    [label="EVALUATE\nARI / NMI vs manual layers", fillcolor="#fde3c8"];
+  genes   [label="SPATIAL_GENES\nMoran's I, layer & domain markers", fillcolor="#fde3c8"];
+  report  [label="REPORT\nreport.html, summary_metrics.csv", fillcolor="#d5ecd4"];
+
+  sheet -> fetch -> qc -> norm;
+  norm -> expr; norm -> spat;
+  norm -> eval; expr -> eval; spat -> eval;
+  norm -> genes; spat -> genes;
+  qc -> report [style=dashed, color="#999999"];
+  eval -> report; genes -> report;
+  {rank=same; expr; spat}
+  {rank=same; eval; genes}
+}
