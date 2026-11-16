@@ -15,8 +15,11 @@ RUN micromamba install -y -n base -f /tmp/environment.yml \
  && micromamba clean --all --yes
 
 # Make the env usable without activation (Nextflow runs `bash -c ...`)
+# Caches must be writable when Nextflow runs the container as the host user
 ENV PATH=/opt/conda/bin:$PATH \
-    MPLBACKEND=Agg
+    MPLBACKEND=Agg \
+    MPLCONFIGDIR=/tmp/mplconfig \
+    NUMBA_CACHE_DIR=/tmp/numba_cache
 
 LABEL org.opencontainers.image.title="spPipe" \
       org.opencontainers.image.description="Spatial transcriptomics (Visium DLPFC) pipeline environment: scanpy, squidpy, leidenalg"

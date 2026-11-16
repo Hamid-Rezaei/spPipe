@@ -19,6 +19,7 @@ import time
 import urllib.request
 from pathlib import Path
 
+import sppipe_utils  # noqa: F401,I001  (sets writable matplotlib/numba cache dirs)
 import matplotlib.image as mpimg
 import numpy as np
 import pandas as pd
