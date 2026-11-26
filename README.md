@@ -139,7 +139,7 @@ This environment only provides Nextflow; all analysis packages are handled by Ne
 ### Step 3: Get the pipeline
 
 ```bash
-git clone https://github.com/<github-user>/spPipe.git
+git clone https://github.com/Hamid-Rezaei/spPipe.git
 cd spPipe
 ```
 
